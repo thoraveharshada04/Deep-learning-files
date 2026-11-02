@@ -5,100 +5,41 @@
 <title>Deep Learning Practical Hub</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f3f5fb;
-  color: #202b45;
-}
-header {
-  background: linear-gradient(135deg,#172554,#5145a5);
-  color: white;
-  text-align: center;
-  padding: 55px 20px;
-}
-header h1 { font-size: 32px; }
-header p { color: #e0e7ff; }
-.container {
-  max-width: 850px;
-  margin: 35px auto;
-  padding: 15px;
-}
-.card {
-  background: white;
-  padding: 23px;
-  margin: 18px 0;
-  border-radius: 14px;
-  box-shadow: 0 4px 15px #dce0ec;
-}
-.card h3 { margin-top: 0; }
-a {
-  display: inline-block;
-  padding: 10px 17px;
-  margin: 5px 5px 0 0;
-  border-radius: 7px;
-  text-decoration: none;
-  background: #5145a5;
-  color: white;
-}
-a.download { background: #16845b; }
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #777;
-}
+body{font-family:Arial;background:#f2f4fa;margin:0;color:#243052}
+header{background:#263b70;color:white;text-align:center;padding:40px 15px}
+main{max-width:750px;margin:30px auto;padding:15px}
+.card{background:white;padding:22px;margin:18px 0;border-radius:12px;box-shadow:0 3px 12px #ddd}
+a{display:inline-block;background:#263b70;color:white;padding:10px 15px;margin:5px;border-radius:6px;text-decoration:none}
 </style>
 </head>
 <body>
-
 <header>
 <h1>💻 Deep Learning Practical Hub</h1>
-<p>All Five Practicals at One Place</p>
-<p>BE Information Technology</p>
+<p>All Practicals at One Place</p>
 </header>
-
-<div class="container" id="practicals"></div>
-
-<footer>
-<p>Deep Learning Practical Collection | 2026</p>
-</footer>
-
+<main id="list"></main>
 <script>
-const username = "thoraveharshada04";
-const repo = "Deep-learning-files";
+const user="thoraveharshada04";
+const repo="Deep-learning-files";
 
-const files = [
-"DL Practical4.ipynb",
+const files=[
+"DL Practcal4.ipynb",
 "DL Practical1.ipynb",
 "DL_PR_02-Updated.ipynb",
 "pr3.ipynb",
 "pr5.ipynb"
 ];
 
-const container = document.getElementById("practicals");
-
-files.forEach((file, i) => {
-  const path = encodeURIComponent(file);
-
-  const notebook =
-    `https://nbviewer.org/github/${username}/${repo}/blob/main/${path}`;
-
-  const download =
-    `https://raw.githubusercontent.com/${username}/${repo}/main/${path}`;
-
-  container.innerHTML += `
-    <div class="card">
-      <h3>📘 Practical ${i+1}</h3>
-      <p>${file}</p>
-      <a href="${notebook}" target="_blank">Open Notebook ↗</a>
-      <a class="download" href="${download}" download>
-        Download ↓
-      </a>
-    </div>
-  `;
+files.forEach((f,i)=>{
+const url="https://github.com/"+user+"/"+repo+"/blob/main/"+encodeURIComponent(f);
+document.getElementById("list").innerHTML+=`
+<div class="card">
+<h3>Practical ${i+1}</h3>
+<p>${f}</p>
+<a href="${url}" target="_blank">Open Practical</a>
+<a href="https://raw.githubusercontent.com/${user}/${repo}/main/${encodeURIComponent(f)}" download>Download</a>
+</div>`;
 });
 </script>
-
 </body>
 </html>

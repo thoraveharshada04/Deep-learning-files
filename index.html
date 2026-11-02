@@ -1,52 +1,166 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deep Learning Practical Hub</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
-body{font-family:Arial;background:#f2f4fa;margin:0;color:#243052}
-header{background:#263b70;color:white;text-align:center;padding:40px 15px}
-main{max-width:750px;margin:30px auto;padding:15px}
-.card{background:white;padding:22px;margin:18px 0;border-radius:12px;box-shadow:0 3px 12px #ddd}
-a{display:inline-block;background:#263b70;color:white;padding:10px 15px;margin:5px;border-radius:6px;text-decoration:none}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f5fb;
+    color: #263252;
+}
+
+header {
+    background: linear-gradient(135deg, #172554, #5145a5);
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+header p {
+    color: #e0e7ff;
+}
+
+.container {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 15px;
+}
+
+.section-title {
+    margin-top: 30px;
+    color: #263b70;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    margin: 18px 0;
+    border-radius: 13px;
+    box-shadow: 0 4px 15px #dce0ec;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.btn {
+    display: inline-block;
+    background: #5145a5;
+    color: white;
+    padding: 11px 17px;
+    margin: 5px 5px 0 0;
+    border-radius: 7px;
+    text-decoration: none;
+}
+
+.download {
+    background: #16845b;
+}
+
+footer {
+    background: #172554;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
 </style>
 </head>
-<body>
-<header>
-<h1>💻 Deep Learning Practical Hub</h1>
-<p>All Practicals at One Place</p>
-</header>
-<main id="list"></main>
-<script>
-const user="thoraveharshada04";
-const repo="Deep-learning-files";
 
-const files=[
-"DL Practcal4.ipynb",
-"DL Practical1.ipynb",
-"DL_PR_02-Updated.ipynb",
-"pr3.ipynb",
-"pr5.ipynb"
+<body>
+
+<header>
+    <h1>💻 Deep Learning Practical Hub</h1>
+    <p>All Practicals and Dataset in One Place</p>
+    <p>BE Information Technology | 2026</p>
+</header>
+
+<div class="container">
+
+<h2 class="section-title">📘 Practical Notebooks</h2>
+
+<div id="practicals"></div>
+
+<h2 class="section-title">📂 Dataset</h2>
+
+<div class="card">
+    <h3>📊 Google Stock Dataset</h3>
+    <p>GOOGL.csv</p>
+
+    <a class="btn download"
+       href="GOOGL.csv"
+       download>
+       Download Dataset ↓
+    </a>
+</div>
+
+</div>
+
+<footer>
+    <p>Deep Learning Practical Hub | 2026</p>
+    <p>All Practical Files at One Place</p>
+</footer>
+
+<script>
+
+const username = "thoraveharshada04";
+const repo = "Deep-learning-files";
+
+const files = [
+    "DL Practcal4.ipynb",
+    "DL Practical1.ipynb",
+    "DL_PR_02-Updated.ipynb",
+    "pr3.ipynb",
+    "pr5.ipynb"
 ];
 
-files.forEach((f,i)=>{
-const url="https://github.com/"+user+"/"+repo+"/blob/main/"+encodeURIComponent(f);
-document.getElementById("list").innerHTML+=`
-<div class="card">
-<h3>Practical ${i+1}</h3>
-<p>${f}</p>
-<a href="${url}" target="_blank">Open Practical</a>
-<a href="https://raw.githubusercontent.com/${user}/${repo}/main/${encodeURIComponent(f)}" download>Download</a>
-</div>`;
+const container = document.getElementById("practicals");
+
+files.forEach((file, i) => {
+
+    const path = encodeURIComponent(file);
+
+    const githubURL =
+    `https://github.com/${username}/${repo}/blob/main/${path}`;
+
+    const downloadURL =
+    `https://raw.githubusercontent.com/${username}/${repo}/main/${path}`;
+
+    container.innerHTML += `
+    <div class="card">
+        <h3>📘 Practical ${i + 1}</h3>
+        <p>${file}</p>
+
+        <a class="btn"
+           href="${githubURL}"
+           target="_blank">
+           View on GitHub ↗
+        </a>
+
+        <a class="btn download"
+           href="${downloadURL}"
+           download>
+           Download Notebook ↓
+        </a>
+    </div>
+    `;
 });
+
 </script>
+
 </body>
 </html>
-<div class="card">
-  <h3>📂 Google Stock Dataset</h3>
-  <p>GOOGL.csv</p>
-  <a href="GOOGL.csv" download>
-    Download Dataset ↓
-  </a>
-</div>
